@@ -1,0 +1,8 @@
+{
+  "name": "SILAII Sculpture Store",
+  "description": "Authentic handcrafted Indian heritage sculptures, featuring the Ayodhya Ram Mandir replica with rich gallery, reviews, and fast checkout.",
+  "permissions": [],
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

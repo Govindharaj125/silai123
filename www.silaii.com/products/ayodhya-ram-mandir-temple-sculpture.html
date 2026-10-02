@@ -2299,13 +2299,13 @@
                 if (lastVisitedProduct) {
                     BspdLastVisitedProduct = lastVisitedProduct;
 
-                    if (BspdCurrentProduct ? .id !== BspdLastVisitedProduct) {
+                    if (BspdCurrentProduct?.id !== BspdLastVisitedProduct) {
                         // set the cookie again
-                        bspdSetBarCookie(BSPD_LAST_VISITED_PRODUCT, BspdCurrentProduct ? .id, 300);
+                        bspdSetBarCookie(BSPD_LAST_VISITED_PRODUCT, BspdCurrentProduct?.id, 300);
                     }
-                } else if (BspdCurrentProduct && BspdCurrentProduct ? .id) {
+                } else if (BspdCurrentProduct && BspdCurrentProduct?.id) {
                     // set the cookie
-                    bspdSetBarCookie(BSPD_LAST_VISITED_PRODUCT, BspdCurrentProduct ? .id, 300);
+                    bspdSetBarCookie(BSPD_LAST_VISITED_PRODUCT, BspdCurrentProduct?.id, 300);
                 }
             }
 
@@ -2315,13 +2315,13 @@
                 if (lastVisitedCollection) {
                     BspdLastVisitedCollection = lastVisitedCollection;
 
-                    if (BspdCurrentCollection ? .id !== BspdLastVisitedCollection) {
+                    if (BspdCurrentCollection?.id !== BspdLastVisitedCollection) {
                         // set the cookie again
-                        bspdSetBarCookie(BSPD_LAST_VISITED_COLLECTION, BspdCurrentCollection ? .id, 300);
+                        bspdSetBarCookie(BSPD_LAST_VISITED_COLLECTION, BspdCurrentCollection?.id, 300);
                     }
-                } else if (BspdCurrentCollection && BspdCurrentCollection ? .id) {
+                } else if (BspdCurrentCollection && BspdCurrentCollection?.id) {
                     // set the cookie
-                    bspdSetBarCookie(BSPD_LAST_VISITED_COLLECTION, BspdCurrentCollection ? .id, 300);
+                    bspdSetBarCookie(BSPD_LAST_VISITED_COLLECTION, BspdCurrentCollection?.id, 300);
                 }
             }
         }
@@ -2455,7 +2455,7 @@
                 });
                 const res = await response.json();
 
-                const contactId = res ? .results ? .[1] ? .value ? .id ? ? res ? .results ? .[1] ? .id ? ? res ? .results ? .contactId;
+                const contactId = res?.results?.[1]?.value?.id ?? res?.results?.[1]?.id ?? res?.results?.contactId;
 
                 if (res && contactId) {
                     bspdSetBarCookie(BSPD_CONTACT_ID_COOKIE_ID, contactId, 1000);
@@ -2996,7 +2996,7 @@
         var popup_id = "";
         // var product = {"id":7003640758357,"title":"Ram Mandir Sculpture","handle":"ayodhya-ram-mandir-temple-sculpture","description":"\u003cdiv\u003e\n\u003cdiv\u003e\n\u003cp style=\"text-align: left;\"\u003e\u003cstrong\u003eSILAII proudly unveils a finely crafted replica of the grand Ram Mandir, a symbol of devotion located in Ayodhya, Uttar Pradesh. This beautifully crafted sculpture offers a tangible connection to the spiritual and architectural majesty of one of India's most cherished temples, allowing you to feel the essence of the Ayodhya Ram Mandir in your own space.\u003cbr\u003e\u003cbr\u003eThe Ram Mandir stands as the world's third-largest Hindu temple. Its impressive dimensions—250 feet wide, 380 feet long, and 161 feet tall—celebrate Lord Rama's timeless legacy in Ayodhya.\u003cbr\u003e\u003cbr\u003eRenowned as the Ayodhya Mandir or the Ram Temple, its design features a three-storey structure adorned with five captivating mandapas: Nritya, Rang, Sabha, Prarthana, and Kirtan, each crowned with exquisite Nagara-style peaks.\u003cbr\u003e\u003cbr\u003eWith SILAII's Ram Mandir Ayodhya sculpture, you invite divine inspiration and Ayodhya's resilient spirit into your home or office. Experience the sacred legacy of the Ram Temple with SILAII's artistry, where every detail bridges the gap between spirituality and craftsmanship.\u003c\/strong\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cstrong\u003eSCULPTURE DETAILS \u003c\/strong\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan\u003eSize: In inches\u003c\/span\u003e\u003cbr\u003e\u003cspan\u003eLength: 12\u003c\/span\u003e\u003cbr\u003e\u003cspan\u003eHeight x Width: 6.5 x 8\u003c\/span\u003e\u003cbr\u003e\u003cspan\u003eMaterial: Marble Powder with Resin\u003c\/span\u003e\u003cbr\u003e\u003cspan\u003eColor: Antique Bronze\u003c\/span\u003e\u003cbr\u003e\u003cspan\u003eWeight (approx): 3 kg\u003c\/span\u003e \u003cbr\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan\u003eSize: In inches\u003c\/span\u003e\u003cbr\u003e\u003cspan\u003eLength: 6\u003c\/span\u003e\u003cbr\u003e\u003cspan\u003eHeight x Width: 3 x 3.8 \u003c\/span\u003e\u003cbr\u003e\u003cspan\u003eMaterial: Marble Powder with Resin\u003c\/span\u003e\u003cbr\u003e\u003cspan\u003eColor: Antique Bronze\u003c\/span\u003e\u003cbr\u003e\u003cspan\u003eWeight (approx): 0.2 kg\u003c\/span\u003e\u003c\/p\u003e\n\u003cdiv\u003e\u003cspan\u003e------------------------------------------\u003c\/span\u003e\u003c\/div\u003e\n\u003cp style=\"text-align: left;\"\u003e\u003cstrong\u003eSCULPTED BY\u003cbr\u003e\u003c\/strong\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-size: 13px; color: #000000; font-weight: normal; text-decoration: none; font-family: 'Arial'; font-style: normal; text-decoration-skip-ink: none;\"\u003eDaniel Ravichandran\u003c\/span\u003e \u003cbr\u003e\u003c\/p\u003e\n\u003cp style=\"text-align: left;\"\u003e\u003cstrong\u003eCONCEPT \u0026amp; IDEATION BY\u003cbr\u003e\u003c\/strong\u003e\u003c\/p\u003e\n\u003cp\u003eArun Titan\u003cbr\u003e\u003c\/p\u003e\n\u003cp style=\"text-align: left;\"\u003e\u003cstrong\u003eCRAFTED BY\u003cbr\u003e\u003c\/strong\u003e\u003c\/p\u003e\n\u003cp\u003eRagul Kishan, Nishanthan, Nishanth, Vijayan, Raja Pandi, Ravi, Govinda Raj, Logesh Waran, Shesathri, Swetha V, Swetha D, Revathi, Arivazhagi, Selvaraj, Jayasurya, Vignesh, Charumathi, Rathna, Uma, Saraswathi, Santhanam, Chitra, Parameshwari \u0026amp; Varalakshmi.\u003cbr\u003e\u003c\/p\u003e\n\u003cp style=\"text-align: left;\"\u003e\u003cstrong\u003eMANUFACTURED BY\u003cbr\u003e\u003c\/strong\u003e\u003c\/p\u003e\n\u003cp\u003eSILAIIGAL PVT LTD\u003c\/p\u003e\n\u003cp style=\"text-align: left;\"\u003e\u003cstrong\u003eMARKETING \u0026amp; SALES\u003cbr\u003e\u003c\/strong\u003e\u003c\/p\u003e\n\u003cp\u003eSILAIIGAL PVT LTD\u003c\/p\u003e\n\u003c\/div\u003e\n\u003c\/div\u003e\n\u003cdiv\u003e\u003cstrong\u003eFree Shipping All Over India.\u003c\/strong\u003e\u003c\/div\u003e\n\u003cdiv\u003e\n\u003cbr\u003e\n\u003cdiv\u003e\n\u003cdiv\u003e\n\u003cp\u003efor BULK bookings and customized sculpture, call: \u003cstrong\u003e9884688804\u003c\/strong\u003e or e-mail: \u003cstrong\u003econtact@silaii.com\u003c\/strong\u003e\u003c\/p\u003e\n\u003c\/div\u003e\n\u003c\/div\u003e\n\u003c\/div\u003e","published_at":"2024-03-15T06:28:48+05:30","created_at":"2024-03-13T18:39:46+05:30","vendor":"SILAII","type":"Stone Powder with Resin","tags":["Ayodhya","ayodhya ram mandir","full figure","hand made product","heritage","Hindugod","HistoricalMonument","indian","Indian Collectibles","Indian Sculpture","IndianHeritage","IndianPride","janmabhoomi","landmark","Largesthindutemple","lordram","monument","monumental","Monuments","ram janmabhoomi","ram mandir","Rammandir","Ramtemple","sculpture","shri ram mandir","Silaii","SilaiiSculptureSalesCenter","spiritualDecor","statue","Stone Sculpture","Temple"],"price":199900,"price_min":199900,"price_max":499900,"available":true,"price_varies":true,"compare_at_price":269900,"compare_at_price_min":269900,"compare_at_price_max":799900,"compare_at_price_varies":true,"variants":[{"id":40865646968917,"title":"6 INCHES - LENGTH \/ ANTIQUE BRONZE","option1":"6 INCHES - LENGTH","option2":"ANTIQUE BRONZE","option3":null,"sku":"SI075SBR","requires_shipping":true,"taxable":true,"featured_image":{"id":31531952177237,"product_id":7003640758357,"position":3,"created_at":"2024-07-05T10:42:35+05:30","updated_at":"2024-07-05T10:42:37+05:30","alt":null,"width":3000,"height":3000,"src":"\/\/www.silaii.com\/cdn\/shop\/files\/Ram_Mandir_6inch.jpg?v=1720156357","variant_ids":[40865646968917]},"available":true,"name":"Ram Mandir Sculpture - 6 INCHES - LENGTH \/ ANTIQUE BRONZE","public_title":"6 INCHES - LENGTH \/ ANTIQUE BRONZE","options":["6 INCHES - LENGTH","ANTIQUE BRONZE"],"price":199900,"weight":900,"compare_at_price":269900,"inventory_management":"shopify","barcode":"46968917","featured_media":{"alt":null,"id":23880210612309,"position":3,"preview_image":{"aspect_ratio":1.0,"height":3000,"width":3000,"src":"\/\/www.silaii.com\/cdn\/shop\/files\/Ram_Mandir_6inch.jpg?v=1720156357"}},"requires_selling_plan":false,"selling_plan_allocations":[],"quantity_rule":{"min":1,"max":null,"increment":1}},{"id":40798631395413,"title":"12 INCHES (1 FEET) - LENGTH \/ ANTIQUE BRONZE","option1":"12 INCHES (1 FEET) - LENGTH","option2":"ANTIQUE BRONZE","option3":null,"sku":"SI075LBR","requires_shipping":true,"taxable":true,"featured_image":{"id":31271441203285,"product_id":7003640758357,"position":2,"created_at":"2024-03-13T18:40:13+05:30","updated_at":"2024-04-15T23:17:51+05:30","alt":null,"width":3000,"height":3000,"src":"\/\/www.silaii.com\/cdn\/shop\/files\/Ram_Mandir_Size.jpg?v=1713203271","variant_ids":[40798631395413]},"available":true,"name":"Ram Mandir Sculpture - 12 INCHES (1 FEET) - LENGTH \/ ANTIQUE BRONZE","public_title":"12 INCHES (1 FEET) - LENGTH \/ ANTIQUE BRONZE","options":["12 INCHES (1 FEET) - LENGTH","ANTIQUE BRONZE"],"price":499900,"weight":3500,"compare_at_price":799900,"inventory_management":"shopify","barcode":"31395413","featured_media":{"alt":null,"id":23613740613717,"position":2,"preview_image":{"aspect_ratio":1.0,"height":3000,"width":3000,"src":"\/\/www.silaii.com\/cdn\/shop\/files\/Ram_Mandir_Size.jpg?v=1713203271"}},"requires_selling_plan":false,"selling_plan_allocations":[],"quantity_rule":{"min":1,"max":null,"increment":1}}],"images":["\/\/www.silaii.com\/cdn\/shop\/files\/Ram_Mandir_3.jpg?v=1716379543","\/\/www.silaii.com\/cdn\/shop\/files\/Ram_Mandir_Size.jpg?v=1713203271","\/\/www.silaii.com\/cdn\/shop\/files\/Ram_Mandir_6inch.jpg?v=1720156357","\/\/www.silaii.com\/cdn\/shop\/files\/Ram_Mandir_1.jpg?v=1713203271","\/\/www.silaii.com\/cdn\/shop\/files\/Ram_Mandir_2.jpg?v=1713203271","\/\/www.silaii.com\/cdn\/shop\/files\/Ram_Mandir_4.jpg?v=1712120749","\/\/www.silaii.com\/cdn\/shop\/files\/Ram_Mandir_6.jpg?v=1712120749","\/\/www.silaii.com\/cdn\/shop\/files\/Ram_Mandir_5.jpg?v=1712120749","\/\/www.silaii.com\/cdn\/shop\/files\/Ram_Mandir_7.jpg?v=1712120749","\/\/www.silaii.com\/cdn\/shop\/files\/Hapiness_Guaranteed.jpg?v=1712120749"],"featured_image":"\/\/www.silaii.com\/cdn\/shop\/files\/Ram_Mandir_3.jpg?v=1716379543","options":["Size","Color"],"media":[{"alt":null,"id":23613740449877,"position":1,"preview_image":{"aspect_ratio":1.0,"height":3000,"width":3000,"src":"\/\/www.silaii.com\/cdn\/shop\/files\/Ram_Mandir_3.jpg?v=1716379543"},"aspect_ratio":1.0,"height":3000,"media_type":"image","src":"\/\/www.silaii.com\/cdn\/shop\/files\/Ram_Mandir_3.jpg?v=1716379543","width":3000},{"alt":null,"id":23613740613717,"position":2,"preview_image":{"aspect_ratio":1.0,"height":3000,"width":3000,"src":"\/\/www.silaii.com\/cdn\/shop\/files\/Ram_Mandir_Size.jpg?v=1713203271"},"aspect_ratio":1.0,"height":3000,"media_type":"image","src":"\/\/www.silaii.com\/cdn\/shop\/files\/Ram_Mandir_Size.jpg?v=1713203271","width":3000},{"alt":null,"id":23880210612309,"position":3,"preview_image":{"aspect_ratio":1.0,"height":3000,"width":3000,"src":"\/\/www.silaii.com\/cdn\/shop\/files\/Ram_Mandir_6inch.jpg?v=1720156357"},"aspect_ratio":1.0,"height":3000,"media_type":"image","src":"\/\/www.silaii.com\/cdn\/shop\/files\/Ram_Mandir_6inch.jpg?v=1720156357","width":3000},{"alt":null,"id":23613740384341,"position":4,"preview_image":{"aspect_ratio":1.0,"height":3000,"width":3000,"src":"\/\/www.silaii.com\/cdn\/shop\/files\/Ram_Mandir_1.jpg?v=1713203271"},"aspect_ratio":1.0,"height":3000,"media_type":"image","src":"\/\/www.silaii.com\/cdn\/shop\/files\/Ram_Mandir_1.jpg?v=1713203271","width":3000},{"alt":null,"id":23613740417109,"position":5,"preview_image":{"aspect_ratio":1.0,"height":3000,"width":3000,"src":"\/\/www.silaii.com\/cdn\/shop\/files\/Ram_Mandir_2.jpg?v=1713203271"},"aspect_ratio":1.0,"height":3000,"media_type":"image","src":"\/\/www.silaii.com\/cdn\/shop\/files\/Ram_Mandir_2.jpg?v=1713203271","width":3000},{"alt":null,"id":23613740482645,"position":6,"preview_image":{"aspect_ratio":1.0,"height":3000,"width":3000,"src":"\/\/www.silaii.com\/cdn\/shop\/files\/Ram_Mandir_4.jpg?v=1712120749"},"aspect_ratio":1.0,"height":3000,"media_type":"image","src":"\/\/www.silaii.com\/cdn\/shop\/files\/Ram_Mandir_4.jpg?v=1712120749","width":3000},{"alt":null,"id":23613740548181,"position":7,"preview_image":{"aspect_ratio":1.0,"height":3000,"width":3000,"src":"\/\/www.silaii.com\/cdn\/shop\/files\/Ram_Mandir_6.jpg?v=1712120749"},"aspect_ratio":1.0,"height":3000,"media_type":"image","src":"\/\/www.silaii.com\/cdn\/shop\/files\/Ram_Mandir_6.jpg?v=1712120749","width":3000},{"alt":null,"id":23613740515413,"position":8,"preview_image":{"aspect_ratio":1.0,"height":3000,"width":3000,"src":"\/\/www.silaii.com\/cdn\/shop\/files\/Ram_Mandir_5.jpg?v=1712120749"},"aspect_ratio":1.0,"height":3000,"media_type":"image","src":"\/\/www.silaii.com\/cdn\/shop\/files\/Ram_Mandir_5.jpg?v=1712120749","width":3000},{"alt":null,"id":23613740580949,"position":9,"preview_image":{"aspect_ratio":1.0,"height":3000,"width":3000,"src":"\/\/www.silaii.com\/cdn\/shop\/files\/Ram_Mandir_7.jpg?v=1712120749"},"aspect_ratio":1.0,"height":3000,"media_type":"image","src":"\/\/www.silaii.com\/cdn\/shop\/files\/Ram_Mandir_7.jpg?v=1712120749","width":3000},{"alt":null,"id":23613740777557,"position":10,"preview_image":{"aspect_ratio":1.0,"height":3000,"width":3000,"src":"\/\/www.silaii.com\/cdn\/shop\/files\/Hapiness_Guaranteed.jpg?v=1712120749"},"aspect_ratio":1.0,"height":3000,"media_type":"image","src":"\/\/www.silaii.com\/cdn\/shop\/files\/Hapiness_Guaranteed.jpg?v=1712120749","width":3000}],"requires_selling_plan":false,"selling_plan_groups":[],"content":"\u003cdiv\u003e\n\u003cdiv\u003e\n\u003cp style=\"text-align: left;\"\u003e\u003cstrong\u003eSILAII proudly unveils a finely crafted replica of the grand Ram Mandir, a symbol of devotion located in Ayodhya, Uttar Pradesh. This beautifully crafted sculpture offers a tangible connection to the spiritual and architectural majesty of one of India's most cherished temples, allowing you to feel the essence of the Ayodhya Ram Mandir in your own space.\u003cbr\u003e\u003cbr\u003eThe Ram Mandir stands as the world's third-largest Hindu temple. Its impressive dimensions—250 feet wide, 380 feet long, and 161 feet tall—celebrate Lord Rama's timeless legacy in Ayodhya.\u003cbr\u003e\u003cbr\u003eRenowned as the Ayodhya Mandir or the Ram Temple, its design features a three-storey structure adorned with five captivating mandapas: Nritya, Rang, Sabha, Prarthana, and Kirtan, each crowned with exquisite Nagara-style peaks.\u003cbr\u003e\u003cbr\u003eWith SILAII's Ram Mandir Ayodhya sculpture, you invite divine inspiration and Ayodhya's resilient spirit into your home or office. Experience the sacred legacy of the Ram Temple with SILAII's artistry, where every detail bridges the gap between spirituality and craftsmanship.\u003c\/strong\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cstrong\u003eSCULPTURE DETAILS \u003c\/strong\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan\u003eSize: In inches\u003c\/span\u003e\u003cbr\u003e\u003cspan\u003eLength: 12\u003c\/span\u003e\u003cbr\u003e\u003cspan\u003eHeight x Width: 6.5 x 8\u003c\/span\u003e\u003cbr\u003e\u003cspan\u003eMaterial: Marble Powder with Resin\u003c\/span\u003e\u003cbr\u003e\u003cspan\u003eColor: Antique Bronze\u003c\/span\u003e\u003cbr\u003e\u003cspan\u003eWeight (approx): 3 kg\u003c\/span\u003e \u003cbr\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan\u003eSize: In inches\u003c\/span\u003e\u003cbr\u003e\u003cspan\u003eLength: 6\u003c\/span\u003e\u003cbr\u003e\u003cspan\u003eHeight x Width: 3 x 3.8 \u003c\/span\u003e\u003cbr\u003e\u003cspan\u003eMaterial: Marble Powder with Resin\u003c\/span\u003e\u003cbr\u003e\u003cspan\u003eColor: Antique Bronze\u003c\/span\u003e\u003cbr\u003e\u003cspan\u003eWeight (approx): 0.2 kg\u003c\/span\u003e\u003c\/p\u003e\n\u003cdiv\u003e\u003cspan\u003e------------------------------------------\u003c\/span\u003e\u003c\/div\u003e\n\u003cp style=\"text-align: left;\"\u003e\u003cstrong\u003eSCULPTED BY\u003cbr\u003e\u003c\/strong\u003e\u003c\/p\u003e\n\u003cp\u003e\u003cspan style=\"font-size: 13px; color: #000000; font-weight: normal; text-decoration: none; font-family: 'Arial'; font-style: normal; text-decoration-skip-ink: none;\"\u003eDaniel Ravichandran\u003c\/span\u003e \u003cbr\u003e\u003c\/p\u003e\n\u003cp style=\"text-align: left;\"\u003e\u003cstrong\u003eCONCEPT \u0026amp; IDEATION BY\u003cbr\u003e\u003c\/strong\u003e\u003c\/p\u003e\n\u003cp\u003eArun Titan\u003cbr\u003e\u003c\/p\u003e\n\u003cp style=\"text-align: left;\"\u003e\u003cstrong\u003eCRAFTED BY\u003cbr\u003e\u003c\/strong\u003e\u003c\/p\u003e\n\u003cp\u003eRagul Kishan, Nishanthan, Nishanth, Vijayan, Raja Pandi, Ravi, Govinda Raj, Logesh Waran, Shesathri, Swetha V, Swetha D, Revathi, Arivazhagi, Selvaraj, Jayasurya, Vignesh, Charumathi, Rathna, Uma, Saraswathi, Santhanam, Chitra, Parameshwari \u0026amp; Varalakshmi.\u003cbr\u003e\u003c\/p\u003e\n\u003cp style=\"text-align: left;\"\u003e\u003cstrong\u003eMANUFACTURED BY\u003cbr\u003e\u003c\/strong\u003e\u003c\/p\u003e\n\u003cp\u003eSILAIIGAL PVT LTD\u003c\/p\u003e\n\u003cp style=\"text-align: left;\"\u003e\u003cstrong\u003eMARKETING \u0026amp; SALES\u003cbr\u003e\u003c\/strong\u003e\u003c\/p\u003e\n\u003cp\u003eSILAIIGAL PVT LTD\u003c\/p\u003e\n\u003c\/div\u003e\n\u003c\/div\u003e\n\u003cdiv\u003e\u003cstrong\u003eFree Shipping All Over India.\u003c\/strong\u003e\u003c\/div\u003e\n\u003cdiv\u003e\n\u003cbr\u003e\n\u003cdiv\u003e\n\u003cdiv\u003e\n\u003cp\u003efor BULK bookings and customized sculpture, call: \u003cstrong\u003e9884688804\u003c\/strong\u003e or e-mail: \u003cstrong\u003econtact@silaii.com\u003c\/strong\u003e\u003c\/p\u003e\n\u003c\/div\u003e\n\u003c\/div\u003e\n\u003c\/div\u003e"};
         // var product_variants = [{"id":40865646968917,"title":"6 INCHES - LENGTH \/ ANTIQUE BRONZE","option1":"6 INCHES - LENGTH","option2":"ANTIQUE BRONZE","option3":null,"sku":"SI075SBR","requires_shipping":true,"taxable":true,"featured_image":{"id":31531952177237,"product_id":7003640758357,"position":3,"created_at":"2024-07-05T10:42:35+05:30","updated_at":"2024-07-05T10:42:37+05:30","alt":null,"width":3000,"height":3000,"src":"\/\/www.silaii.com\/cdn\/shop\/files\/Ram_Mandir_6inch.jpg?v=1720156357","variant_ids":[40865646968917]},"available":true,"name":"Ram Mandir Sculpture - 6 INCHES - LENGTH \/ ANTIQUE BRONZE","public_title":"6 INCHES - LENGTH \/ ANTIQUE BRONZE","options":["6 INCHES - LENGTH","ANTIQUE BRONZE"],"price":199900,"weight":900,"compare_at_price":269900,"inventory_management":"shopify","barcode":"46968917","featured_media":{"alt":null,"id":23880210612309,"position":3,"preview_image":{"aspect_ratio":1.0,"height":3000,"width":3000,"src":"\/\/www.silaii.com\/cdn\/shop\/files\/Ram_Mandir_6inch.jpg?v=1720156357"}},"requires_selling_plan":false,"selling_plan_allocations":[],"quantity_rule":{"min":1,"max":null,"increment":1}},{"id":40798631395413,"title":"12 INCHES (1 FEET) - LENGTH \/ ANTIQUE BRONZE","option1":"12 INCHES (1 FEET) - LENGTH","option2":"ANTIQUE BRONZE","option3":null,"sku":"SI075LBR","requires_shipping":true,"taxable":true,"featured_image":{"id":31271441203285,"product_id":7003640758357,"position":2,"created_at":"2024-03-13T18:40:13+05:30","updated_at":"2024-04-15T23:17:51+05:30","alt":null,"width":3000,"height":3000,"src":"\/\/www.silaii.com\/cdn\/shop\/files\/Ram_Mandir_Size.jpg?v=1713203271","variant_ids":[40798631395413]},"available":true,"name":"Ram Mandir Sculpture - 12 INCHES (1 FEET) - LENGTH \/ ANTIQUE BRONZE","public_title":"12 INCHES (1 FEET) - LENGTH \/ ANTIQUE BRONZE","options":["12 INCHES (1 FEET) - LENGTH","ANTIQUE BRONZE"],"price":499900,"weight":3500,"compare_at_price":799900,"inventory_management":"shopify","barcode":"31395413","featured_media":{"alt":null,"id":23613740613717,"position":2,"preview_image":{"aspect_ratio":1.0,"height":3000,"width":3000,"src":"\/\/www.silaii.com\/cdn\/shop\/files\/Ram_Mandir_Size.jpg?v=1713203271"}},"requires_selling_plan":false,"selling_plan_allocations":[],"quantity_rule":{"min":1,"max":null,"increment":1}}];
-        var product_variants = BspdCurrentProduct ? .variants || [];
+        var product_variants = (typeof BspdCurrentProduct !== 'undefined' && BspdCurrentProduct?.variants) || [];
         var product_id = 7003640758357;
         var current_variant = null;
         var is_current_variant_available = true;
@@ -3006,8 +3006,8 @@
         var shop_domain = "";
         var dont_show_notify_me_strict = false;
 
-        var variants = BspdCurrentProduct ? .variants
-        var productCollections = BspdCurrentProduct ? .collections
+        var variants = (typeof BspdCurrentProduct !== 'undefined' && BspdCurrentProduct?.variants) || [];
+        var productCollections = (typeof BspdCurrentProduct !== 'undefined' && BspdCurrentProduct?.collections) || [];
 
         window.product_id = product_id;
         window.current_variant = current_variant;
@@ -3040,7 +3040,7 @@
             //     product = productFetch;
             //     variants = productFetch.variants;
             //   }
-        } else if (!current_variant && Array.isArray(BspdCurrentProduct ? .variants) && BspdCurrentProduct ? .variants.length > 0) {
+        } else if (!current_variant && typeof BspdCurrentProduct !== 'undefined' && Array.isArray(BspdCurrentProduct?.variants) && BspdCurrentProduct?.variants.length > 0) {
             // change the current_variant to the first variant in the url
 
             // window.history.replaceState(
@@ -3723,7 +3723,7 @@
 
             switch (shopUrl) {
                 case "headphone-zone.myshopify.com":
-                    if ((BspdCurrentProduct ? .tags || []).some(tag => tag.toLowerCase() === "hidenotify"))
+                    if (((typeof BspdCurrentProduct !== 'undefined' && BspdCurrentProduct?.tags) || []).some(tag => tag.toLowerCase() === "hidenotify"))
                         return false;
                     break;
                 default:
@@ -5030,72 +5030,6 @@
 
 
 
-    </div>
-    <div id="shopify-section-sections--17778706120789__announcement-bar" class="shopify-section shopify-section-group-header-group section-announcement-bar">
-
-        <announcement-bar id="section-id-sections--17778706120789__announcement-bar" class="announcement-bar announcement-bar--with-announcement">
-            <style data-shopify>
-                #section-id-sections--17778706120789__announcement-bar {
-                    --bg-color: #f0c72a;
-                    --bg-gradient: ;
-                    --heading-color: 0 0 0;
-                    --text-color: 0 0 0;
-                    --link-color: 0 0 0;
-                    --announcement-font-size: 14px;
-                }
-            </style>
-            <div class="announcement-bg announcement-bg--inactive absolute inset-0" data-index="1" style="
-            background:
-#f0c72a
-"></div>
-            <div class="container container--no-max relative">
-                <div class="announcement-bar__left desktop-only">
-
-                </div>
-
-                <div class="announcement-bar__middle">
-                    <div class="announcement-bar__announcements">
-                        <div class="announcement" style="--heading-color: 0 0 0;
-                    --text-color: 0 0 0;
-                    --link-color: 0 0 0;
-                ">
-                            <div class="announcement__text">
-                                <strong>Free Shipping on orders above ₹999</strong>
-
-
-                            </div>
-                        </div>
-                        <div class="announcement announcement--inactive" style="--heading-color: 0 0 0;
-                    --text-color: 0 0 0;
-                    --link-color: 0 0 0;
-                ">
-                            <div class="announcement__text">
-                                <strong>Trusted by Over 2 Lakh+ Customers</strong>
-
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="announcement-bar__announcement-controller">
-                        <button class="announcement-button announcement-button--previous" aria-label="Previous"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon feather feather-chevron-left" aria-hidden="true" focusable="false" role="presentation"><path d="m15 18-6-6 6-6"/></svg></button>
-                        <button
-                            class="announcement-button announcement-button--next" aria-label="Next"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon feather feather-chevron-right" aria-hidden="true" focusable="false"
-                                role="presentation"><path d="m9 18 6-6-6-6"/></svg></button>
-                    </div>
-                </div>
-
-                <div class="announcement-bar__right desktop-only">
-
-                    <span class="inline-menu">
-            
-              <a class="inline-menu__link announcement-bar__link" href="https://www.silaii.com/apps/trackyourorder">Track your order</a>
-            
-          </span>
-
-
-                </div>
-            </div>
-        </announcement-bar>
     </div>
     <div id="shopify-section-sections--17778706120789__header" class="shopify-section shopify-section-group-header-group section-header">
         <style data-shopify>
@@ -9369,84 +9303,6 @@
 
 
             </div>
-            <div id="shopify-section-template--17778719686741__36d85097-a693-4a29-bbe4-c6bf9fae47c0" class="shopify-section section-logo-list">
-                <div id="section-id-template--17778719686741__36d85097-a693-4a29-bbe4-c6bf9fae47c0" class="fully-spaced-row--medium">
-                    <style data-shopify>
-                        #section-id-template--17778719686741__36d85097-a693-4a29-bbe4-c6bf9fae47c0 .logo-list__logo-image {
-                            opacity: 75%;
-                        }
-
-                        #section-id-template--17778719686741__36d85097-a693-4a29-bbe4-c6bf9fae47c0 .logo-list__link:hover .logo-list__logo-image {
-                            opacity: 90.0%;
-                        }
-
-                        #section-id-template--17778719686741__36d85097-a693-4a29-bbe4-c6bf9fae47c0 .logo-list__logo-1 .logo-list__logo-image {
-                            max-width: 130px;
-                        }
-
-                        #section-id-template--17778719686741__36d85097-a693-4a29-bbe4-c6bf9fae47c0 .logo-list__logo-2 .logo-list__logo-image {
-                            max-width: 130px;
-                        }
-
-                        #section-id-template--17778719686741__36d85097-a693-4a29-bbe4-c6bf9fae47c0 .logo-list__logo-3 .logo-list__logo-image {
-                            max-width: 130px;
-                        }
-
-                        #section-id-template--17778719686741__36d85097-a693-4a29-bbe4-c6bf9fae47c0 .logo-list__logo-4 .logo-list__logo-image {
-                            max-width: 130px;
-                        }
-                    </style>
-                    <div class="container">
-                        <h2 class="hometitle h4 align-center spaced-row" data-cc-animate data-cc-animate-delay="0.15s">
-                            Why should you choose SILAII ?
-                        </h2>
-
-                        <div class="logo-list-container">
-                            <div class="logo-list logo-list--count-4">
-                                <div class="logo-list__logo logo-list__logo-1 fade-in-up" data-cc-animate data-cc-animate-delay="0.15s">
-                                    <div class="logo-list__logo-image">
-                                        <img src="//www.silaii.com/cdn/shop/files/sculpture.png?v=1686051667&amp;width=512" alt="" srcset="//www.silaii.com/cdn/shop/files/sculpture.png?v=1686051667&amp;width=130 130w, //www.silaii.com/cdn/shop/files/sculpture.png?v=1686051667&amp;width=260 260w"
-                                            width="512" height="512" sizes="130px" class="theme-img">
-                                    </div>
-                                    <div class="logo-list__logo-title">
-                                        FINEST DETAILS
-                                    </div>
-                                </div>
-                                <div class="logo-list__logo logo-list__logo-2 fade-in-up" data-cc-animate data-cc-animate-delay="0.3s">
-                                    <div class="logo-list__logo-image">
-                                        <img src="//www.silaii.com/cdn/shop/files/worldwide-shipping.png?v=1687251331&amp;width=512" alt="" srcset="//www.silaii.com/cdn/shop/files/worldwide-shipping.png?v=1687251331&amp;width=130 130w, //www.silaii.com/cdn/shop/files/worldwide-shipping.png?v=1687251331&amp;width=260 260w"
-                                            width="512" height="512" sizes="130px" class="theme-img">
-                                    </div>
-                                    <div class="logo-list__logo-title">
-                                        WORLDWIDE SHIPPING
-                                    </div>
-                                </div>
-                                <div class="logo-list__logo logo-list__logo-3 fade-in-up" data-cc-animate data-cc-animate-delay="0.45s">
-                                    <div class="logo-list__logo-image">
-                                        <img src="//www.silaii.com/cdn/shop/files/high-quality.png?v=1686053870&amp;width=512" alt="" srcset="//www.silaii.com/cdn/shop/files/high-quality.png?v=1686053870&amp;width=130 130w, //www.silaii.com/cdn/shop/files/high-quality.png?v=1686053870&amp;width=260 260w"
-                                            width="512" height="512" sizes="130px" class="theme-img">
-                                    </div>
-                                    <div class="logo-list__logo-title">
-                                        REALISTIC FINISH
-                                    </div>
-                                </div>
-                                <div class="logo-list__logo logo-list__logo-4 fade-in-up" data-cc-animate data-cc-animate-delay="0.6s">
-                                    <div class="logo-list__logo-image">
-                                        <img src="//www.silaii.com/cdn/shop/files/rating.png?v=1686731224&amp;width=512" alt="" srcset="//www.silaii.com/cdn/shop/files/rating.png?v=1686731224&amp;width=130 130w, //www.silaii.com/cdn/shop/files/rating.png?v=1686731224&amp;width=260 260w" width="512"
-                                            height="512" sizes="130px" class="theme-img">
-                                    </div>
-                                    <div class="logo-list__logo-title">
-                                        ONE LAKH+ HAPPY CUSTOMERS
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-
-            </div>
             <div id="shopify-section-template--17778719686741__judgeme_section_review_widget_03a8" class="shopify-section section-apps">
                 <div class="fully-spaced-row--medium">
                     <div class="container"></div>
@@ -9502,11 +9358,6 @@
 
 
 
-
-
-
-                <script async src="https://cdn.nector.io/nector-static/no-cache/reward-widget/mainloader.min.js" data-op="review_list" data-platform_url="https://platform.nector.io" data-websdk_url="https://websdk.nector.io" data-api_key="ak_c4038a9e24042481695314f05651949bc54786cc5c2a9b62a29cc8d70e323583"
-                    data-entity_id="512765ba-445c-4a65-b310-bc821028fba2" data-product_id="7003640758357" data-platform="shopify" data-view_type="image_optimized_grid" data-hide_date="true"></script>
 
 
 
@@ -9629,74 +9480,6 @@
 
 
 
-                    </div>
-
-
-
-
-                    <div class="section-footer__row__col section-footer__menu-block" role="navigation" aria-label="Secondary">
-                        <mobile-disclosure class="block">
-                            <details class="mobile-disclosure" open>
-                                <summary class="mobile-disclosure__title" tabindex="-1">
-
-                                    <div class="section-footer__title heading-font h6 no-wrap">MORE INFORMATION</div>
-
-                                </summary>
-                                <div class="mobile-disclosure__panel has-motion">
-                                    <div class="mobile-disclosure__content">
-
-                                        <ul class="section-footer__menu-block__menu">
-
-                                            <li>
-                                                <a href="/blogs/news" class="no-wrap">BLOGS</a>
-                                            </li>
-
-                                            <li>
-                                                <a href="/pages/contact" class="no-wrap">CONTACT US</a>
-                                            </li>
-
-                                            <li>
-                                                <a href="/pages/about-us" class="no-wrap">ABOUT US</a>
-                                            </li>
-
-                                            <li>
-                                                <a href="/pages/we-are-hiring" class="no-wrap">JOIN OUR TEAM</a>
-                                            </li>
-
-                                            <li>
-                                                <a href="https://silaii.myshopify.com/apps/return_prime" class="no-wrap">RETURN & EXCHANGE</a>
-                                            </li>
-
-                                            <li>
-                                                <a href="https://www.silaii.com/apps/trackyourorder" class="no-wrap">TRACK YOUR ORDER</a>
-                                            </li>
-
-                                            <li>
-                                                <a href="/pages/return-and-refund" class="no-wrap">RETURN & REFUND POLICY</a>
-                                            </li>
-
-                                            <li>
-                                                <a href="/pages/terms-of-use" class="no-wrap">TERMS OF USE</a>
-                                            </li>
-
-                                            <li>
-                                                <a href="/pages/privacy-policy" class="no-wrap">PRIVACY POLICY</a>
-                                            </li>
-
-                                            <li>
-                                                <a href="/pages/shipping-policy" class="no-wrap">SHIPPING POLICY</a>
-                                            </li>
-
-                                            <li>
-                                                <a href="/pages/empowering-innovation-creativity">INTELLECTUAL PROPERTY PROTECTION </a>
-                                            </li>
-
-                                        </ul>
-
-                                    </div>
-                                </div>
-                            </details>
-                        </mobile-disclosure>
                     </div>
 
 
@@ -10399,49 +10182,6 @@
 
 
 
-    </div>
-    <div id="shopify-block-AYk5wTWl3MG55b0h3b__3519927876758688699" class="shopify-block shopify-app-block">
-        <!-- BEGIN app snippet: widget_initializer -->
-
-
-
-
-
-
-
-
-
-
-        <!-- BEGIN app snippet: nector_auth -->
-        <!-- END app snippet -->
-
-        <script async src="https://cdn.nector.io/nector-static/no-cache/reward-widget/mainloader.min.js" data-op="widget" data-platform_url="https://platform.nector.io" data-websdk_url="https://websdk.nector.io" data-api_key="ak_c4038a9e24042481695314f05651949bc54786cc5c2a9b62a29cc8d70e323583"
-            data-entity_id="512765ba-445c-4a65-b310-bc821028fba2" data-customer_id="" data-platform="shopify" data-target_currency="INR"></script>
-        <!-- END app snippet -->
-    </div>
-    <div id="shopify-block-AVU8zZ3R6emUrLzhxa__9995956779367812066" class="shopify-block shopify-app-block">
-        <!-- BEGIN app snippet: visitorwidget_initializer -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <!-- BEGIN app snippet: nector_auth -->
-        <!-- END app snippet -->
-
-        <script async src="https://cdn.nector.io/nector-static/no-cache/reward-widget/mainloader.min.js" data-op="visitor_widget" data-platform_url="https://platform.nector.io" data-api_key="ak_c4038a9e24042481695314f05651949bc54786cc5c2a9b62a29cc8d70e323583"
-            data-entity_id="512765ba-445c-4a65-b310-bc821028fba2" data-customer_id="" data-platform="shopify" data-delay="2.5" data-title="Get discount on your first purchase" data-show_widget="true" data-target_currency="INR"></script>
-        <!-- END app snippet -->
     </div>
     <div id="shopify-block-Ac1NyV1AwN0xoVFpoN__5784066569132941777" class="shopify-block shopify-app-block">
         <!-- begin -->

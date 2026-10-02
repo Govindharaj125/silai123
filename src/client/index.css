@@ -1,0 +1,658 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800;900&family=Jost:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --primary: #eab308; /* yellow-500: Main Brand Accent */
+  --primary-hover: #ca8a04; /* yellow-600 */
+  --secondary: #fef08a; /* yellow-200: Secondary Highlight Accent */
+  --secondary-hover: #fde047; /* yellow-300 */
+  --primary-light: #fefce8; /* yellow-50 */
+  --accent: #eab308; /* yellow-500 */
+  --dark: #18181b;
+  --dark-hero: #09090b;
+  --text-main: #18181b;
+  --text-muted: #71717a;
+  --border-white: #ffffff;
+  --bg-main: #fdfbf7;
+  --bg-card: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Jost', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--text-main);
+  background-color: var(--bg-main);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Cinzel', serif;
+  color: var(--dark);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+input, select, textarea {
+  font-family: inherit;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Global App Shell Header */
+.silaii-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 9999;
+  background: #ffffff;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  border-bottom: 2px solid var(--border-white);
+}
+
+.silaii-nav-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px;
+  max-width: 1440px;
+  margin: 0 auto;
+  gap: 16px;
+}
+
+.silaii-brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: var(--dark);
+}
+
+.silaii-brand-logo img {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+  transition: transform 0.2s;
+}
+
+.silaii-brand-logo:hover img {
+  transform: scale(1.05);
+}
+
+.silaii-brand-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  color: var(--dark);
+}
+
+.silaii-nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Icon Buttons (Search & Cart with White Borders) */
+.silaii-icon-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--secondary);
+  border: 2px solid var(--border-white);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--dark);
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.silaii-icon-btn:hover,
+.silaii-icon-btn.active {
+  background: var(--primary);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.silaii-cart-badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background: var(--primary);
+  color: var(--dark);
+  font-size: 0.75rem;
+  font-weight: 800;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--border-white);
+}
+
+/* Action Buttons with White Borders */
+.silaii-btn-contact {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--secondary);
+  border: 2px solid var(--border-white);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  color: var(--dark);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.silaii-btn-contact:hover {
+  background: var(--primary);
+}
+
+.silaii-btn-login {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--primary);
+  color: var(--dark);
+  padding: 8px 18px;
+  border-radius: 20px;
+  border: 2px solid var(--border-white);
+  font-size: 0.85rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(234, 179, 8, 0.35);
+}
+
+.silaii-btn-login:hover {
+  background: var(--primary-hover);
+  color: #ffffff;
+}
+
+.silaii-profile-trigger {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--secondary);
+  border: 2px solid var(--border-white);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+  padding: 4px 14px 4px 4px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--dark);
+  cursor: pointer;
+}
+
+.silaii-avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: var(--dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 0.85rem;
+  border: 1.5px solid var(--border-white);
+}
+
+/* Category Navigation Menu Bar */
+.silaii-nav-menu-bar {
+  background: #fffbeb;
+  border-top: 2px solid var(--border-white);
+  overflow-x: auto;
+  white-space: nowrap;
+  scrollbar-width: none;
+}
+.silaii-nav-menu-bar::-webkit-scrollbar { display: none; }
+
+.silaii-nav-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+  margin: 0 auto;
+  padding: 0 16px;
+  max-width: 1440px;
+  gap: 4px;
+}
+
+.silaii-nav-link-item a,
+.silaii-nav-link-item button {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 10px 12px;
+  color: #3f3f46;
+  text-decoration: none;
+  font-size: 0.78rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition: all 0.2s;
+  position: relative;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.silaii-nav-link-item a:hover,
+.silaii-nav-link-item button:hover,
+.silaii-nav-link-item.active a {
+  color: var(--dark);
+  font-weight: 500;
+}
+
+.silaii-nav-link-item.active a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 8px;
+  right: 8px;
+  height: 3px;
+  background: var(--primary);
+  border-radius: 2px;
+}
+
+.silaii-badge-new {
+  background: var(--primary);
+  color: var(--dark);
+  font-size: 0.65rem;
+  font-weight: 800;
+  padding: 1px 5px;
+  border-radius: 3px;
+  border: 1px solid var(--border-white);
+}
+
+/* App Main Content Area */
+.silaii-app-main {
+  padding-top: 106px;
+  min-height: calc(100vh - 106px);
+}
+
+/* Product Card Component */
+.sculpture-card {
+  background: #ffffff;
+  border: 2.5px solid var(--border-white);
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.sculpture-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(234, 179, 8, 0.25);
+}
+
+.card-img-wrap {
+  position: relative;
+  width: 100%;
+  height: 360px;
+  background: #ffffff;
+  overflow: hidden;
+  display: block;
+  border-bottom: 2px solid var(--border-white);
+}
+
+.card-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: var(--primary);
+  color: var(--dark);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  padding: 4px 10px;
+  border-radius: 14px;
+  border: 2px solid var(--border-white);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+  text-transform: uppercase;
+}
+
+.card-body {
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background: #ffffff;
+}
+
+.card-cat {
+  font-size: 0.72rem;
+  color: var(--primary);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 4px;
+}
+
+.card-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--dark);
+  margin: 0 0 6px;
+  line-height: 1.35;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.card-title:hover {
+  color: var(--primary);
+}
+
+.card-dims {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+
+.card-rating {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  color: var(--primary);
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+.card-rating span {
+  color: var(--text-muted);
+  font-weight: normal;
+}
+
+.card-price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-top: auto;
+  margin-bottom: 16px;
+}
+
+.card-price {
+  font-size: 1.35rem;
+  font-weight: 400;
+  color: var(--dark);
+}
+
+.card-compare-price {
+  font-size: 0.9rem;
+  color: #a1a1aa;
+  text-decoration: line-through;
+}
+
+.card-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.btn-view-details {
+  background: var(--secondary);
+  color: var(--dark);
+  border: 2px solid var(--border-white);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  padding: 9px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.btn-view-details:hover {
+  background: var(--secondary-hover);
+}
+
+.btn-quick-add {
+  background: var(--primary);
+  color: var(--dark);
+  border: 2px solid var(--border-white);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  padding: 9px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-quick-add:hover {
+  background: var(--primary-hover);
+  color: #ffffff;
+}
+
+/* Pagination Component */
+.pagination-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 40px 0;
+}
+
+.pagination-btn {
+  background: #ffffff;
+  border: 2px solid var(--border-white);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+  color: var(--dark);
+  min-width: 40px;
+  height: 40px;
+  padding: 0 14px;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.pagination-btn:hover:not(:disabled) {
+  background: #fef08a;
+}
+
+.pagination-btn.active {
+  background: var(--primary);
+  color: var(--dark);
+  box-shadow: 0 2px 8px rgba(234, 179, 8, 0.35);
+}
+
+.pagination-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Modals with White Borders */
+.silaii-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.65);
+  backdrop-filter: blur(4px);
+  z-index: 100000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  animation: fadeIn 0.2s ease;
+}
+
+.silaii-modal-card {
+  background: #ffffff;
+  border-radius: 18px;
+  width: 100%;
+  max-width: 460px;
+  padding: 28px;
+  position: relative;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+  border: 3px solid var(--border-white);
+  animation: slideUp 0.25s ease;
+}
+
+.silaii-modal-close {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #71717a;
+  line-height: 1;
+}
+
+.silaii-form-group {
+  margin-bottom: 14px;
+}
+
+.silaii-form-group label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 4px;
+  text-transform: uppercase;
+}
+
+.silaii-form-group input,
+.silaii-form-group textarea,
+.silaii-form-group select {
+  width: 100%;
+  padding: 10px 14px;
+  border: 2px solid var(--border-white);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+  border-radius: 8px;
+  font-size: 0.95rem;
+  background: #f8fafc;
+  color: var(--dark);
+  transition: all 0.2s;
+}
+
+.silaii-form-group input:focus,
+.silaii-form-group textarea:focus,
+.silaii-form-group select:focus {
+  outline: none;
+  border-color: var(--border-white);
+  box-shadow: 0 0 0 3px rgba(234, 179, 8, 0.35);
+  background: #fff;
+}
+
+.silaii-form-btn {
+  background: var(--primary);
+  color: var(--dark);
+  border: 2px solid var(--border-white);
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 800;
+  cursor: pointer;
+  width: 100%;
+  transition: background 0.2s;
+}
+
+.silaii-form-btn:hover {
+  background: var(--primary-hover);
+  color: #ffffff;
+}
+
+.silaii-demo-btn {
+  background: var(--secondary);
+  border: 2px solid var(--border-white);
+  color: var(--dark);
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.silaii-demo-btn:hover {
+  background: var(--secondary-hover);
+}
+
+/* Toast Component */
+.silaii-toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: var(--dark);
+  color: #fff;
+  padding: 14px 20px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  z-index: 1000000;
+  border: 2px solid var(--border-white);
+  animation: slideInRight 0.3s ease;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slideInRight {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
