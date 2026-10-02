@@ -1,0 +1,14 @@
+ (function(n, i, t, r, o) {
+     var a, m;
+     n['NitroObject'] = o;
+     n[o] = n[o] || function() {
+         (n[o].q = n[o].q || []).push(arguments)
+     }, n[o].l = 1 * new Date();
+     n[o].h = r;
+     a = i.createElement(t), a.setAttribute('data-cfasync', 'false'), m = i.getElementsByTagName(t)[0];
+     a.id = 'ntro-scrpt';
+     a.async = 1;
+     a.src = r;
+     m.parentNode.insertBefore(a, m)
+ })(window, document, 'script', 'https://x.nitrocommerce.ai/nitro.js?_=e42d1bd926a8223c5fdccc62b3a5045fc90ba57f', 'nitro');
+ nitro('configure', 'eaee307c-f439-4d10-b002-7a242863ae89', 'shopify', 'https://t.makehook.ws');

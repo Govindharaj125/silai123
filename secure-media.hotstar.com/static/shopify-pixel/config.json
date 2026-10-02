@@ -1,0 +1,9 @@
+{
+  "enabled": true,
+  "blackListedDomains": [],
+  "eventSampling": {
+    "cp_page_view": true,
+    "cp_action": true
+  },
+  "biFrostPixelBaseUrl": "https://hspx.hotstar.com/v1"
+}

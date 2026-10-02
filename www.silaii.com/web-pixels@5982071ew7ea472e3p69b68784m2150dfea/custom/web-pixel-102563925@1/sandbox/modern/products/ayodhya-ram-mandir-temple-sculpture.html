@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Web Pixels Manager Sandbox</title>
+    <script src="https://www.silaii.com/cdn/wpm/s5982071ew7ea472e3p69b68784m2150dfeam.js"></script>
+
+    <script type="text/javascript">
+        (function(shopify) {
+            shopify.extend('WebPixel::Render', function(api) {
+                var analytics = api.analytics,
+                    browser = api.browser,
+                    init = api.init;
+
+                function setWithExpiry(key, value, ttlMs) {
+                    const now = Date.now();
+                    const item = {
+                        value,
+                        expiry: now + ttlMs
+                    };
+                    localStorage.setItem(key, JSON.stringify(item))
+                }
+
+                function getWithExpiry(key) {
+                    const itemStr = localStorage.getItem(key);
+                    if (!itemStr) return null;
+                    try {
+                        const item = JSON.parse(itemStr);
+                        if (Date.now() > item.expiry) {
+                            localStorage.removeItem(key);
+                            return null
+                        }
+                        return item.value
+                    } catch {
+                        return null
+                    }
+                }
+
+                function generateUid() {
+                    const currTimestamp = Date.now();
+                    return `hs.${currTimestamp}.${"xxxxxxxxxx".replace(/[x]/g, (e) => {
+    const t = (16 * Math.random()) | 0;
+    return ("x" === e ? t : (3 & t) | 8).toString(16);
+  })}`
+                }
+
+                function getOrGenerateUid() {
+                    let uid = localStorage.getItem("uid");
+                    if (!uid) {
+                        uid = generateUid();
+                        localStorage.setItem("uid", uid)
+                    }
+                    return uid
+                }
+
+                function getClickIdFromUrl(url) {
+                    return new URLSearchParams(url).get("hsClkId") || ""
+                }
+                async function extractAndSaveClickId(url) {
+                    const uid = getOrGenerateUid();
+                    const hclkIdStored = getWithExpiry("hsClkId");
+                    const hclkIdUrl = getClickIdFromUrl(url);
+                    if (hclkIdUrl) {
+                        if (!hclkIdStored || hclkIdStored !== hclkIdUrl) {
+                            setWithExpiry("hsClkId", hclkIdUrl, 7 * 24 * 60 * 60 * 1000)
+                        }
+                        return {
+                            hclkId: hclkIdUrl,
+                            uid
+                        }
+                    }
+                    return {
+                        hclkId: hclkIdStored || "-",
+                        uid
+                    }
+                }
+
+                function isPixelEnabledOnCurrDomain(pixelsConfig, hostname) {
+                    let hostUrl;
+                    try {
+                        hostUrl = new URL(hostname);
+                        if (hostUrl) {
+                            return (pixelsConfig && pixelsConfig.enabled && !(pixelsConfig ? .blackListedDomains ? .length > 0 && pixelsConfig.blackListedDomains.includes(hostUrl.host)))
+                        }
+                        return !1
+                    } catch (e) {
+                        return !1
+                    }
+                }
+
+                function generateUserName(firstName, lastName) {
+                    if (!firstName && !lastName) {
+                        return null
+                    }
+                    return `${firstName || ""} ${lastName || ""}`.trim()
+                }
+
+                function formatPhoneNumber(phoneNumber) {
+                    if (!phoneNumber) {
+                        return null
+                    }
+                    let cleanedNumber = phoneNumber.replace(/\D/g, '');
+                    if (cleanedNumber.length >= 10) {
+                        cleanedNumber = cleanedNumber.slice(-10)
+                    } else if (cleanedNumber.length > 0) {
+                        cleanedNumber = cleanedNumber.padStart(10, '0')
+                    } else {
+                        return null
+                    }
+                    return cleanedNumber
+                }
+                async function hashString(message) {
+                    if (!message) {
+                        return null
+                    }
+                    const encoder = new TextEncoder();
+                    const data = encoder.encode(message);
+                    const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+                    const hashArray = Array.from(new Uint8Array(hashBuffer));
+                    const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+                    return hashHex
+                }
+                async function generateHashedUserData(firstName, lastName, email, phone) {
+                    const userName = generateUserName(firstName, lastName);
+                    const formattedPhone = formatPhoneNumber(phone);
+                    const cna = await hashString(userName) || "-";
+                    const ce = await hashString(email) || "-";
+                    const cm = await hashString(formattedPhone) || "-";
+                    return {
+                        cna,
+                        ce,
+                        cm
+                    }
+                }
+                const pi = 'SS_9633_Silaii';
+                let pixelConfig = {
+                    enabled: !1,
+                    blackListedDomains: [],
+                    eventSampling: {
+                        cp_page_view: !1,
+                        cp_action: !1,
+                    },
+                    biFrostPixelBaseUrl: "",
+                };
+                async function fetchPixelConfig() {
+                    const controller = new AbortController();
+                    const {
+                        signal
+                    } = controller;
+                    const timeoutId = setTimeout(() => {
+                        controller.abort();
+                        clearTimeout(timeoutId)
+                    }, 30 * 1000);
+                    try {
+                        const configUrl = 'https://secure-media.hotstar.com/static/shopify-pixel/config.json';
+                        const pixelsConfigResponse = await fetch(configUrl, {
+                            signal
+                        });
+                        clearTimeout(timeoutId);
+                        const config = await pixelsConfigResponse.json();
+                        if (Object.hasOwn(config, "enabled")) {
+                            pixelConfig = config
+                        }
+                    } catch (err) {
+                        clearTimeout(timeoutId)
+                    }
+                }
+
+                function hspixel_custom_pv(event, data, uid, hclkId) {
+                    const currentRef = document.referrer || '';
+                    const currentUri = window.location.href || '';
+                    const params = new URLSearchParams({
+                        evn: event,
+                        pi,
+                        ui: uid,
+                        hclk: hclkId || "",
+                        ref: currentRef,
+                        uri: currentUri,
+                        ct: Date.now().toString(),
+                        pvr: "1.0",
+                        src: "shopify",
+                        ...data
+                    });
+                    try {
+                        const img = new Image();
+                        img.src = `https://hspx.hotstar.com/v1/events/track/cp_page_view?${params.toString()}`
+                    } catch (e) {
+                        console.error("hspixel failed:", e)
+                    }
+                }
+
+                function hspixel_custom(event, data, uid, hclkId) {
+                    const currentRef = document.referrer || '';
+                    const currentUri = window.location.href || '';
+                    const params = new URLSearchParams({
+                        evn: event,
+                        pi,
+                        ui: uid,
+                        hclk: hclkId || "",
+                        ref: currentRef,
+                        uri: currentUri,
+                        ct: Date.now().toString(),
+                        pvr: "1.0",
+                        src: "shopify",
+                        ...data
+                    });
+                    try {
+                        const img = new Image();
+                        img.src = `https://hspx.hotstar.com/v1/events/track/cp_action?${params.toString()}`
+                    } catch (e) {
+                        console.error("hspixel failed:", e)
+                    }
+                }(async () => {
+                    await fetchPixelConfig();
+                    if (isPixelEnabledOnCurrDomain(pixelConfig, window.location.href)) {
+                        if (pixelConfig ? .eventSampling ? .cp_page_view) {
+                            analytics.subscribe('page_viewed', async (event) => {
+                                const {
+                                    hclkId,
+                                    uid
+                                } = await extractAndSaveClickId(event.context.document.location.search);
+                                hspixel_custom_pv('', {
+                                    pi: pi,
+                                    ref: event.context.document.referrer || '-',
+                                    uri: event.context.document.location.href || '-',
+                                    ct: Date.now(),
+                                    pvr: '1.0',
+                                    src: 'shopify'
+                                }, uid, hclkId)
+                            })
+                        }
+                        if (pixelConfig ? .eventSampling ? .cp_action) {
+                            analytics.subscribe('product_added_to_cart', async (event) => {
+                                const {
+                                    hclkId,
+                                    uid
+                                } = await extractAndSaveClickId(event.context.document.location.search);
+                                hspixel_custom('AddToCart', {
+                                    product_id: event.data ? .cartLine ? .merchandise ? .product ? .id || '-',
+                                    value: event.data.cartLine ? .cost ? .totalAmount ? .amount ? .toString() || '-',
+                                    cdf1: event.data.cartLine ? .cost ? .totalAmount ? .currencyCode || '-',
+                                    cdf2: event.data.cartLine ? .merchandise ? .product ? .title || '-',
+                                    cdf3: event.data.cartLine ? .quantity ? .toString() || '-'
+                                }, uid, hclkId)
+                            });
+                            analytics.subscribe('checkout_started', async (event) => {
+                                const {
+                                    hclkId,
+                                    uid
+                                } = await extractAndSaveClickId(event.context.document.location.search);
+                                const {
+                                    cna,
+                                    ce,
+                                    cm
+                                } = await generateHashedUserData(event.data.checkout.shippingAddress ? .firstName, event.data.checkout.shippingAddress ? .lastName, event.data.checkout.email, event.data.checkout.phone);
+                                hspixel_custom('InitiateCheckout', {
+                                    product_id: event.data.checkout.lineItems ? .reduce((prev, curr, idx) => idx > 0 ? prev.concat(", ", curr.id || "-") : curr.id || "-", "", ) || '-',
+                                    value: event.data.checkout ? .totalPrice ? .amount ? .toString() || '-',
+                                    discount: event.data.checkout ? .discountsAmount ? .amount ? .toString() || '-',
+                                    cdf1: event.data.checkout.totalPrice ? .currencyCode || '-',
+                                    cdf2: event.data.checkout.lineItems ? .reduce((prev, curr, idx) => idx > 0 ? prev.concat(", ", curr.title || "-") : curr.title || "-", "", ) || '-',
+                                    cdf3: event.data.checkout.lineItems ? .reduce((prev, curr, idx) => idx > 0 ? prev.concat(", ", curr.quantity.toString() || "-") : curr.quantity.toString() || "-", "", ) || '-',
+                                    cna,
+                                    ce,
+                                    cm
+                                }, uid, hclkId)
+                            });
+                            analytics.subscribe('checkout_completed', async (event) => {
+                                const {
+                                    hclkId,
+                                    uid
+                                } = await extractAndSaveClickId(event.context.document.location.search);
+                                const {
+                                    cna,
+                                    ce,
+                                    cm
+                                } = await generateHashedUserData(event.data.checkout.shippingAddress ? .firstName, event.data.checkout.shippingAddress ? .lastName, event.data.checkout.email, event.data.checkout.phone);
+                                hspixel_custom('Purchase', {
+                                    purchase_id: event.data.checkout.order ? .id || '-',
+                                    value: event.data.checkout.totalPrice ? .amount ? .toString() || '-',
+                                    cdf1: event.data.checkout.totalPrice ? .currencyCode || '-',
+                                    cdf2: event.data.checkout.lineItems.reduce((prev, curr, idx) => idx > 0 ? prev.concat(", ", curr.title || "-") : curr.title || "-", "", ),
+                                    cdf3: event.data.checkout.lineItems.reduce((prev, curr, idx) => idx > 0 ? prev.concat(", ", curr.quantity.toString() || "-") : curr.quantity.toString(), "", ),
+                                    cdf5: event.data.checkout.lineItems.reduce((prev, curr, idx) => idx > 0 ? prev.concat(", ", curr.id || "-") : curr.id || "-", "", ),
+                                    cna,
+                                    ce,
+                                    cm
+                                }, uid, hclkId)
+                            });
+                            analytics.subscribe('checkout_contact_info_submitted', async (event) => {
+                                const {
+                                    hclkId,
+                                    uid
+                                } = await extractAndSaveClickId(event.context.document.location.search);
+                                hspixel_custom('GenerateLead', {}, uid, hclkId)
+                            });
+                            analytics.subscribe('search_submitted', async (event) => {
+                                const {
+                                    hclkId,
+                                    uid
+                                } = await extractAndSaveClickId(event.context.document.location.search);
+                                hspixel_custom('Search', {
+                                    search_text: event.data.searchResult.query || '-'
+                                }, uid, hclkId)
+                            });
+                            analytics.subscribe('product_viewed', async (event) => {
+                                const {
+                                    hclkId,
+                                    uid
+                                } = await extractAndSaveClickId(event.context.document.location.search);
+                                hspixel_custom('ViewContent', {
+                                    content_id: event.data ? .productVariant ? .product ? .id || '-',
+                                    content_type: event.data ? .productVariant ? .product ? .title || '-',
+                                    cdf1: event.data ? .productVariant ? .price ? .amount ? .toString() || '-',
+                                    cdf2: event.data ? .productVariant ? .price ? .currencyCode || '-',
+                                    cdf3: event.data ? .productVariant ? .sku || '-'
+                                }, uid, hclkId)
+                            });
+                            analytics.subscribe('payment_info_submitted', async (event) => {
+                                const {
+                                    hclkId,
+                                    uid
+                                } = await extractAndSaveClickId(event.context.document.location.search);
+                                const {
+                                    cna,
+                                    ce,
+                                    cm
+                                } = await generateHashedUserData(event.data.checkout.shippingAddress ? .firstName, event.data.checkout.shippingAddress ? .lastName, event.data.checkout.email, event.data.checkout.phone);
+                                hspixel_custom('PaymentInfoSubmitted', {
+                                    cdf1: event.data.checkout.totalPrice ? .amount ? .toString() || '-',
+                                    cdf2: event.data.checkout.totalPrice ? .currencyCode || '-',
+                                    cna,
+                                    ce,
+                                    cm
+                                }, uid, hclkId)
+                            });
+                            analytics.subscribe('product_removed_from_cart', async (event) => {
+                                const {
+                                    hclkId,
+                                    uid
+                                } = await extractAndSaveClickId(event.context.document.location.search);
+                                hspixel_custom('ProductRemovedFromCart', {}, uid, hclkId)
+                            });
+                            analytics.subscribe('collection_viewed', async (event) => {
+                                const {
+                                    hclkId,
+                                    uid
+                                } = await extractAndSaveClickId(event.context.document.location.search);
+                                hspixel_custom('CollectionViewed', {
+                                    cdf1: event.data ? .collection ? .id || '-',
+                                    cdf2: event.data ? .collection ? .title || '-'
+                                }, uid, hclkId)
+                            });
+                            analytics.subscribe('cart_viewed', async (event) => {
+                                const {
+                                    hclkId,
+                                    uid
+                                } = await extractAndSaveClickId(event.context.document.location.search);
+                                hspixel_custom('CartViewed', {
+                                    cdf1: event.data ? .cart ? .cost ? .totalAmount ? .amount ? .toString() || '-',
+                                    cdf2: event.data ? .cart ? .cost ? .totalAmount ? .currencyCode || '-'
+                                }, uid, hclkId)
+                            })
+                        }
+                    } else {
+                        console.log("Pixel disabled for current domain")
+                    }
+                })()
+            });
+        })(self.webPixelsManager.createShopifyExtend('102563925', 'custom'));
+    </script>
+
+</head>
+
+<body></body>
+
+</html>

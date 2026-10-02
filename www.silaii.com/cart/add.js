@@ -1,0 +1,52 @@
+{
+    "id": 40865646968917,
+    "properties": {},
+    "quantity": 1,
+    "variant_id": 40865646968917,
+    "key": "40865646968917:d7d90b0323d14d3914aee6319da5a43f",
+    "title": "Ram Mandir Sculpture - 6 INCHES - LENGTH / ANTIQUE BRONZE",
+    "product_title": "Ram Mandir Sculpture",
+    "variant_title": "6 INCHES - LENGTH / ANTIQUE BRONZE",
+    "price": 199900,
+    "original_price": 199900,
+    "discounted_price": 199900,
+    "line_price": 199900,
+    "original_line_price": 199900,
+    "presentment_price": 1999.0,
+    "total_discount": 0,
+    "discounts": [],
+    "sku": "SI075SBR",
+    "grams": 900,
+    "vendor": "SILAII",
+    "taxable": true,
+    "product_id": 7003640758357,
+    "product_has_only_default_variant": false,
+    "gift_card": false,
+    "final_price": 199900,
+    "final_line_price": 199900,
+    "url": "/products/ayodhya-ram-mandir-temple-sculpture?variant=40865646968917",
+    "featured_image": {
+        "alt": "Ram Mandir Sculpture",
+        "aspect_ratio": 1.0,
+        "height": 3000,
+        "url": "https://cdn.shopify.com/s/files/1/0063/6030/1653/files/Ram_Mandir_6inch.jpg?v=1720156357",
+        "width": 3000
+    },
+    "image": "https://cdn.shopify.com/s/files/1/0063/6030/1653/files/Ram_Mandir_6inch.jpg?v=1720156357",
+    "handle": "ayodhya-ram-mandir-temple-sculpture",
+    "requires_shipping": true,
+    "product_type": "Stone Powder with Resin",
+    "untranslated_product_title": "Ram Mandir Sculpture",
+    "product_description": "\n\nSILAII proudly unveils a finely crafted replica of the grand Ram Mandir, a symbol of devotion located in Ayodhya, Uttar Pradesh. This beautifully crafted sculpture offers a tangible connection to the spiritual and architectural majesty of one of India's most cherished temples, allowing you to feel the essence of the Ayodhya Ram Mandir in your own space.The Ram Mandir stands as the world's third-largest Hindu temple. Its impressive dimensions—250 feet wide, 380 feet long, and 161 feet tall—celebrate Lord Rama's timeless legacy in Ayodhya.Renowned as the Ayodhya Mandir or the Ram Temple, its design features a three-storey structure adorned with five captivating mandapas: Nritya, Rang, Sabha, Prarthana, and Kirtan, each crowned with exquisite Nagara-style peaks.With SILAII's Ram Mandir Ayodhya sculpture, you invite divine inspiration and Ayodhya's resilient spirit into your home or office. Experience the sacred legacy of the Ram Temple with SILAII's artistry, where every detail bridges the gap between spirituality and craftsmanship.\nSCULPTURE DETAILS \nSize: In inchesLength: 12Height x Width: 6.5 x 8Material: Marble Powder with ResinColor: Antique BronzeWeight (approx): 3 kg \nSize: In inchesLength: 6Height x Width: 3 x 3.8 Material: Marble Powder with ResinColor: Antique BronzeWeight (approx): 0.2 kg\n------------------------------------------\nSCULPTED BY\nDaniel Ravichandran \nCONCEPT & IDEATION BY\nArun Titan\nCRAFTED BY\nRagul Kishan, Nishanthan, Nishanth, Vijayan, Raja Pandi, Ravi, Govinda Raj, Logesh Waran, Shesathri, Swetha V, Swetha D, Revathi, Arivazhagi, Selvaraj, Jayasurya, Vignesh, Charumathi, Rathna, Uma, Saraswathi, Santhanam, Chitra, Parameshwari & Varalakshmi.\nMANUFACTURED BY\nSILAIIGAL PVT LTD\nMARKETING & SALES\nSILAIIGAL PVT LTD\n\n\nFree Shipping All Over India.\n\n\n\n\nfor BULK bookings and customized sculpture, call: 9884688804 or e-mail: contact@silaii.com\n\n\n",
+    "untranslated_variant_title": "6 INCHES - LENGTH / ANTIQUE BRONZE",
+    "variant_options": ["6 INCHES - LENGTH", "ANTIQUE BRONZE"],
+    "options_with_values": [{
+        "name": "Size",
+        "value": "6 INCHES - LENGTH"
+    }, {
+        "name": "Color",
+        "value": "ANTIQUE BRONZE"
+    }],
+    "line_level_discount_allocations": [],
+    "line_level_total_discount": 0
+}
